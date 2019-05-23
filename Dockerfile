@@ -9,8 +9,9 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 # install and cache app dependencies
 COPY package.json /app/package.json
-RUN yarn install --silent
-RUN yarn add react-scripts@3.0.1 -g --silent
+RUN npm config set unsafe-perm true && \
+    npm install --silent && \
+    npm add react-scripts@3.0.1 -g --silent
 
 # start app
-CMD ["yarn", "start"]
+CMD ["npm", "start"]
